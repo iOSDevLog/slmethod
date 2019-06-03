@@ -44,6 +44,7 @@ def _get_deps_info():
         "scipy",
         "pandas",
         "matplotlib",
+        "sklearn",
         "slmethod",
     ]
 

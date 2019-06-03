@@ -2,6 +2,12 @@
 
 Statistical Learning Method 统计学习方法
 
+## 代码规范
+
+参考：<https://docs.python.org/3/tutorial>
+
+* 字符串使用双引号： **""** 
+
 ## 安装
 
 ```sh

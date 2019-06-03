@@ -13,30 +13,30 @@ import slmethod
 here = path.abspath(path.dirname(__file__))
 
 # 安装依赖
-with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
-    all_reqs = f.read().split('\n')
+with open(path.join(here, "requirements.txt"), encoding="utf-8") as f:
+    all_reqs = f.read().split("\n")
 
-install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
-dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startswith('git+')]
+install_requires = [x.strip() for x in all_reqs if "git+" not in x]
+dependency_links = [x.strip().replace("git+", "") for x in all_reqs if x.startswith("git+")]
 
-SCIPY_MIN_VERSION = '1.3'
-NUMPY_MIN_VERSION = '1.16'
-JOBLIB_MIN_VERSION = '0.13'
+SCIPY_MIN_VERSION = "1.3"
+NUMPY_MIN_VERSION = "1.16"
+JOBLIB_MIN_VERSION = "0.13"
 
-DISTNAME = 'slmethod'
+DISTNAME = "slmethod"
 VERSION = slmethod.__version__
-DESCRIPTION = 'Statistical Learning Method package'
-with open('README.md') as f:
+DESCRIPTION = "Statistical Learning Method package"
+with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
-URL = 'https://github.com/iOSDevLog/AIDevLog'
-AUTHOR = 'Xianhua Jia'
-AUTHOR_EMAIL = 'iosdevlog@iosdevlog.com'
-DOWNLOAD_URL = 'https://pypi.org/project/slmethod/#files'
-LICENSE = 'MIT'
+URL = "https://github.com/iOSDevLog/slmethod"
+AUTHOR = "Xianhua Jia"
+AUTHOR_EMAIL = "iosdevlog@iosdevlog.com"
+DOWNLOAD_URL = "https://pypi.org/project/slmethod/#files"
+LICENSE = "MIT"
 PROJECT_URLS = {
-    'Bug Tracker': 'https://github.com/iOSDevLog/slmethod/issues',
-    'Documentation': 'https://github.com/iOSDevLog/slmethod',
-    'Source Code': 'https://github.com/iOSDevLog/slmethod'
+    "Bug Tracker": "https://github.com/iOSDevLog/slmethod/issues",
+    "Documentation": "https://github.com/iOSDevLog/slmethod",
+    "Source Code": "https://github.com/iOSDevLog/slmethod"
 }
 
 setuptools.setup(
@@ -49,7 +49,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url=URL,
     license=LICENSE,
-    packages=setuptools.find_packages(exclude=['contrib', 'docs', 'tests*']),
+    packages=setuptools.find_packages(exclude=["contrib", "docs", "tests*"]),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
@@ -64,8 +64,8 @@ setuptools.setup(
     install_requires=install_requires,
     dependency_links=dependency_links,
     setup_requires=[
-        'numpy>={}'.format(NUMPY_MIN_VERSION),
-        'scipy>={}'.format(SCIPY_MIN_VERSION),
-        'joblib>={}'.format(JOBLIB_MIN_VERSION)
+        "numpy>={}".format(NUMPY_MIN_VERSION),
+        "scipy>={}".format(SCIPY_MIN_VERSION),
+        "joblib>={}".format(JOBLIB_MIN_VERSION)
     ],
 )
