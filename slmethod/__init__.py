@@ -26,7 +26,7 @@ name = 'slmethod'
 __version__ = '0.0.dev5'
 
 try:
-    # 此变量是由生成过程在 _builtins _ 中注入的。它用于在未生成二进制文件时启用 slmethod 子包的导入
+    # 此变量是由生成过程在 _builtins_ 中注入的。它用于在未生成二进制文件时启用 slmethod 子包的导入
     __SKLEARN_SETUP__
 except NameError:
     __SKLEARN_SETUP__ = False
