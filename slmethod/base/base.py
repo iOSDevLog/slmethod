@@ -17,9 +17,6 @@ class BaseEstimator:
         else:
             raise ValueError("You must call `fit` before `predict`")
 
-    def show():
-        raise NotImplementedError()
-
     def _predict(self, X=None):
         raise NotImplementedError()
 
