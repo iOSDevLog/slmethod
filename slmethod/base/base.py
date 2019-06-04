@@ -1,12 +1,31 @@
 import numpy as np
 
+
 class BaseEstimator:
     X = None
     y = None
 
+    def fit(self, X, y=None):
+        self._setup_input(X, y)
+
+    def predict(self, X=None):
+        if not isinstance(X, np.ndarray):
+            X = np.array(X)
+
+        if self.X is not None:
+            return self._predict(X)
+        else:
+            raise ValueError("You must call `fit` before `predict`")
+
+    def show():
+        raise NotImplementedError()
+
+    def _predict(self, X=None):
+        raise NotImplementedError()
+
     def _setup_input(self, X, y=None):
         """确保估计器的输入符合预期格式。
-        
+
         如果需要，通过从类似数组的对象转换，确保 X 和 y 存储为 numpy ndarrays。 
 
         Parameters
@@ -35,18 +54,3 @@ class BaseEstimator:
                 raise ValueError("Number of targets must be > 0")
 
         self.y = y
-
-    def fit(self, X, y=None):
-        self._setup_input(X, y)
-
-    def predict(self, X=None):
-        if not isinstance(X, np.ndarray):
-            X = np.array(X)
-
-        if self.X is not None:
-            return self._predict(X)
-        else:
-            raise ValueError("You must call `fit` before `predict`")
-
-    def _predict(self, X=None):
-        raise NotImplementedError()
