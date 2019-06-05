@@ -1,0 +1,19 @@
+dist: xenial   # required for Python >= 3.7
+language: python
+python:
+- '3.5'
+- '3.6'
+- '3.7'
+install:
+- pip install -r requirements.txt
+script:
+- pytest slmethod
+deploy:
+  provider: pypi
+  user: iosdevlog
+  on:
+    python: 3.7
+    tags: true
+    branch: master
+  password:
+    secure: a9WT+Zu8f+WZtbyOri7tFmjzrQkp4swK0D+A1NC50hbd9fSVFIsYBUQ7Iq+A3vi2OXfBDxhf/tqU52ScvVsLCzz/jWaCH0rPqxj6igUvt0M73Zk8T4SG63n7UEEzAGXzPOwkOVOuCLuGdBFcAfWeoMzFwzdl/CiX9wvA/K2WWgnNjLD7weTSvkLSXAMLmnWCQKSFIzh6rxFRUV6z28Bxx4aHJaMXP9zMTf7xx5V7Yv2ckzouMFf8yHjk/dd+NhXbosww+IyEFr2A82qipmbQHneN6eSifYY5XTPaZzO1HTLH+0p43tMpjtNgWrFvn5vjgRhsm1n+j+bM975MnmPY8JNUVmmjIHsljAiLxRwlUQ6uhyy+LSuCpdPQLhD/ba2B7wBx6s9mKA1yI9VUx3aJ01jhD3cs4xMrGhnw0rwQEEMoOcUIwLvszVPF4U5dkQKK1jqPHcr1hvtJxSIqgZaREeYxT8LzvU87yyJer6JQtzilky3Kot7eRKN97kIfutFBWPV0V3ldsSgGzvClUJdj1s2F1s6Id06ubQD3PEnScoPqVJl0vveVTA8XpcJkOYp1WYTomYgI65UHXggJ/v0BtiW5hZxc8I0vtWPvAL4KT9NKuafJLp5TPaZcAmBZfAlNAr6QeRAwDa5oxyZf4rbIanYjwZ6Z7tkao2KbtxrPcmo=
