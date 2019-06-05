@@ -34,6 +34,12 @@ pip install slmethod
 pip3 install -e .
 ```
 
+### 测试
+
+```sh
+pytest slmethod
+```
+
 ### 发布
 
 ```sh
