@@ -1,5 +1,7 @@
 # slmethod
 
+[![Build Status](https://travis-ci.org/iOSDevLog/slmethod.svg?branch=master)](https://travis-ci.org/iOSDevLog/slmethod)
+
 Statistical Learning Method 统计学习方法
 
 ## 代码规范
