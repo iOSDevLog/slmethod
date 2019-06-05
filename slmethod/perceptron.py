@@ -12,8 +12,9 @@ class Perceptron(BaseEstimator):
     # 是否对偶
     dual = False
 
-    def __init__(self, dual=0, l_rate=0.1):
-        self.l_rate = l_rate
+    def __init__(self, dual=True, l_rate=None):
+        if l_rate is not None:
+            self.l_rate = l_rate
         self.dual = dual
 
     def sign(self, x, w, b):
@@ -39,9 +40,8 @@ class Perceptron(BaseEstimator):
             count = 0  # 记录误分类点的数目
             for i in range(n_samples):
                 if self.y[i] * self.sign(self.w, self.X[i], self.b) <= 0:
-                    self.w = self.w + self.l_rate * np.dot(
-                        self.y[i], self.X[i])
-                    self.b = self.b + self.l_rate * self.y[i]
+                    self.w += self.l_rate * np.dot(self.y[i], self.X[i])
+                    self.b += self.l_rate * self.y[i]
                     count += 1
 
                 if count == 0:
@@ -56,8 +56,8 @@ class Perceptron(BaseEstimator):
         i = 0
         while i < n_samples:
             if self.y[i] * self.sign(self.w, self.X[i], self.b) <= 0:
-                self.w = self.w + self.l_rate * np.dot(self.y[i], self.X[i])
-                self.b = self.b + self.l_rate * self.y[i]
+                self.w += self.l_rate * np.dot(self.y[i], self.X[i])
+                self.b += +self.l_rate * self.y[i]
                 i = 0
             else:
                 i += 1
