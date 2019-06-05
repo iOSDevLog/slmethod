@@ -5,7 +5,7 @@ Statistical Learning Method 统计学习方法
 """
 import sys
 
-name = 'slmethod'
+name = "slmethod"
 
 # PEP0440 compatible formatted version, see:
 # https://www.python.org/dev/peps/pep-0440/
@@ -20,10 +20,10 @@ name = 'slmethod'
 #   X.YrcN  # Release Candidate
 #   X.Y     # Final release
 #
-# Dev branch marker is: 'X.Y.dev' or 'X.Y.devN' where N is an integer.
-# 'X.Y.dev0' is the canonical version of 'X.Y.dev'
+# Dev branch marker is: "X.Y.dev" or "X.Y.devN" where N is an integer.
+# "X.Y.dev0" is the canonical version of "X.Y.dev"
 #
-__version__ = '0.1.1'
+__version__ = "0.1.2"
 
 try:
     # 此变量是由生成过程在 _builtins_ 中注入的。它用于在未生成二进制文件时启用 slmethod 子包的导入
@@ -32,8 +32,8 @@ except NameError:
     __SKLEARN_SETUP__ = False
 
 if __SKLEARN_SETUP__:
-    sys.stderr.write('在生成过程中部分导入 slmethod\n')
+    sys.stderr.write("在生成过程中部分导入 slmethod\n")
 else:
     from .utils._show_versions import show_versions
 
-    __all__ = ['perceptron']
+    __all__ = ["perceptron"]

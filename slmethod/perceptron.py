@@ -91,12 +91,12 @@ class Perceptron(BaseEstimator):
 
         fig, ax = plt.subplots()
 
-        ax.scatter(self.X[:, 0], self.X[:, 1], c=self.y, s=1, marker='o')
+        ax.scatter(self.X[:, 0], self.X[:, 1], c=self.y, s=1, marker="o")
         line, = ax.plot(x_points,
                         np.zeros(len(x_points)),
-                        'r-',
+                        "r-",
                         linewidth=2,
-                        label='slmethod perceptron')
+                        label="slmethod perceptron")
 
         def init():
             line.set_ydata(np.zeros(len(x_points)))
@@ -108,7 +108,7 @@ class Perceptron(BaseEstimator):
             title = "iter: {}, index: {}".format(iter, index)
             plt.title(title)
             # show w and b
-            wb = 'w0: {}, w1: {}, b: {}'.format(w[0], w[1], b)
+            wb = "w0: {}, w1: {}, b: {}".format(w[0], w[1], b)
             ax.set_xlabel(wb)
             # update y
             y_points = -(w[0] * x_points + b) / w[1]
@@ -123,7 +123,7 @@ class Perceptron(BaseEstimator):
                              frames=len(self._wbs),
                              interval=200)
 
-        plt.show()
-
         if name:
-            anim.save(name, writer='imagemagick')
+            anim.save(name, writer="imagemagick")
+        else:
+            plt.show()
