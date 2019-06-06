@@ -59,19 +59,7 @@ class Perceptron(BaseEstimator):
 
     # 对偶
     def _fit_dual(self):
-        n_samples, n_features = self.X.shape
-        self.w = np.zeros(n_features)
-        self.b = 0.0
-
-        i = 0
-        while i < n_samples:
-            if self.y[i] * self.sign(self.w, self.X[i], self.b) <= 0:
-                self.w += self.l_rate * np.dot(self.y[i], self.X[i])
-                self.b += self.l_rate * self.y[i]
-                self._wbs.append((i, self.w, self.b))
-                i = 0
-            else:
-                i += 1
+        pass
 
     def project(self, X):
         return np.dot(X, self.w) + self.b
