@@ -1,4 +1,6 @@
 import numpy as np
+from matplotlib.colors import ListedColormap
+import matplotlib.pyplot as plt
 
 
 class BaseEstimator:
@@ -17,8 +19,33 @@ class BaseEstimator:
         else:
             raise ValueError("You must call `fit` before `predict`")
 
-    def show2d(self, name=None):
-        raise NotImplementedError()
+    def show2d(self):
+        if (self.X.shape[1] != 2):
+            raise ValueError("X must have 2d array.")
+
+        colors = ("red", "blue")
+        resolution = 0.01
+        cmap = ListedColormap(colors[:len(np.unique(self.y))])
+
+        x1_min, x1_max = self.X[:, 0].min() - 1, self.X[:, 0].max() + 1
+        x2_min, x2_max = self.X[:, 1].min() - 1, self.X[:, 1].max() + 1
+        X1, X2 = np.meshgrid(np.arange(x1_min, x1_max, resolution), np.arange(x2_min, x2_max, resolution))
+        y_ = self.predict(np.array([X1.ravel(), X2.ravel()]).T)
+        y_ = y_.reshape(X1.shape)
+        plt.contourf(X1, X2, y_, alpha=0.5, cmap=cmap)
+        plt.xlim(X1.min(), X1.max())
+        plt.ylim(X2.min(), X2.max())
+        plt.scatter(self.X[:, 0], self.X[:, 1], c=self.y, s=10, marker="o")
+
+        x1_points = np.array([x1_min, x1_max])
+        x2_points = -(self.w[0] * x1_points + self.b) / self.w[1]
+
+        plt.plot(x1_points, x2_points, "g-", linewidth=2, label="slmethod perceptron")
+
+        plt.xlabel("x1")
+        plt.ylabel("x2")
+        plt.legend()
+        plt.show()
 
     def _predict(self, X=None):
         raise NotImplementedError()
@@ -26,7 +53,7 @@ class BaseEstimator:
     def _setup_input(self, X, y=None):
         """确保估计器的输入符合预期格式。
 
-        如果需要，通过从类似数组的对象转换，确保 X 和 y 存储为 numpy ndarrays。 
+        如果需要，通过从类似数组的对象转换，确保 X 和 y 存储为 numpy ndarrays
 
         Parameters
         ----------

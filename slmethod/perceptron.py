@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from slmethod.base import BaseEstimator
 from matplotlib.animation import FuncAnimation
+from functools import reduce
 
 
 class Perceptron(BaseEstimator):
@@ -15,6 +16,10 @@ class Perceptron(BaseEstimator):
     dual = False
     # 内部绘图使用 (i, w, b)
     _wbs = []
+    # 对偶 alpha
+    _alpha = 1
+    # gram 矩阵，加速对偶
+    _gram_matrix = None
 
     def __init__(self, dual=True, l_rate=None):
         if l_rate is not None:
@@ -57,9 +62,44 @@ class Perceptron(BaseEstimator):
                 if count == 0:
                     is_finished = True
 
-    # 对偶
+    # 对偶形式
     def _fit_dual(self):
-        pass
+        """
+        对偶形式中训练实例仅以内积的形式出现
+        先求出 Gram 矩阵，能大大减少计算量
+        """
+        n_samples, n_features = self.X.shape
+        self._alpha = np.zeros(n_samples, dtype=np.float64)
+        self.w = np.zeros(n_features, dtype=np.float64)
+        self.b = 0.0
+
+        self._cal_gram_matrix()
+
+        i = 0
+        while i < n_samples:
+            if self._dual_judge(i) <= 0:
+                self._alpha[i] += self.l_rate
+                self.b += self.l_rate * self.y[i]
+                i = 0
+            else:
+                i += 1
+
+        for i in range(n_samples):
+            self.w += self._alpha[i] * self.X[i] * self.y[i]
+
+    # 对偶判定条件
+    def _dual_judge(self, i):
+        sum_array = self._alpha * self.y * self._gram_matrix[:, i]
+        return self.y[i] * reduce(lambda x, y: x+y, sum_array, self.b)
+
+    # 计算Gram Matrix
+    def _cal_gram_matrix(self):
+        n_sample = self.X.shape[0]
+        self._gram_matrix = np.zeros((n_sample, n_sample))
+
+        for i in range(n_sample):
+            for j in range(n_sample):
+                self._gram_matrix[i][j] = np.sum(self.X[i] * self.X[j])
 
     def project(self, X):
         return np.dot(X, self.w) + self.b
@@ -68,7 +108,7 @@ class Perceptron(BaseEstimator):
         X = np.atleast_2d(X)
         return np.sign(self.project(X))
 
-    def show2d(self, name=None):
+    def show_anim(self, name=None):
         if (self.X.shape[1] != 2):
             raise ValueError("X must have 2d array.")
 
@@ -87,7 +127,9 @@ class Perceptron(BaseEstimator):
                         label="slmethod perceptron")
 
         def init():
-            line.set_ydata(np.zeros(len(x_points)))
+            (index, w, b) = self._wbs[-1]
+            y_points = -(w[0] * x_points + b) / w[1]
+            line.set_ydata(y_points)
             return line,
 
         def update(iter):
