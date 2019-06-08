@@ -1,1 +1,1 @@
-conventional-changelog -p angular -i CHANGELOG.md -w
+conventional-changelog -p angular -i CHANGELOG.md -s

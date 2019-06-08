@@ -1,3 +1,5 @@
+# [](https://github.com/iOSDevLog/slmethod/compare/v0.1.5...v) (2019-06-08)
+
 
 
 ## [0.1.4](https://github.com/iOSDevLog/slmethod/compare/v0.1.3...v0.1.4) (2019-06-07)

@@ -4,6 +4,7 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/slmethod.svg)
 ![PyPI](https://img.shields.io/pypi/v/slmethod.svg)
 ![PyPI - License](https://img.shields.io/pypi/l/slmethod.svg)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/slmethod.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/slmethod.svg)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/iOSDevLog/slmethod.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FiOSDevLog%2Fslmethod)
 
@@ -11,7 +12,7 @@ Statistical Learning Method 统计学习方法
 
 ## PyPI 源加速
 
-```
+```python
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple slmethod
 ```
 
