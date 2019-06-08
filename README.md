@@ -9,6 +9,12 @@
 
 Statistical Learning Method 统计学习方法
 
+## PyPI 源加速
+
+```
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple slmethod
+```
+
 ## 代码规范
 
 参考：<https://docs.python.org/3/tutorial>
