@@ -9,6 +9,8 @@ install:
   - pip install -r requirements.txt
 script:
   - pytest slmethod
+before_deploy:
+  - python setup.py sdist bdist_wheel
 deploy:
   provider: pypi
   user: iosdevlog
