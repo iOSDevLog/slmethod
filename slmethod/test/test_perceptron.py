@@ -1,6 +1,6 @@
 import pytest
-from slmethod.perceptron import Perceptron
 import numpy as np
+from slmethod.perceptron import Perceptron
 
 
 @pytest.mark.parametrize("dual, l_rate", [(True, None), (False, None),
