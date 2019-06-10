@@ -31,7 +31,7 @@ class KMeans(BaseEstimator):
             new_clusters = [self._min_k(x) for x in X]
 
             if new_clusters == old_clusters:
-                print(f"Training finished after {n_iters} iterations!")
+                print("Training finished after {n_iters} iterations!".format(n_iters=n_iters))
                 return
 
             old_clusters = new_clusters
