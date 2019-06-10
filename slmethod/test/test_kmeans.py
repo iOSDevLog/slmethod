@@ -1,6 +1,9 @@
 import pytest
+import random
 import numpy as np
 from slmethod.kmeans import KMeans
+
+random.seed(59)
 
 
 @pytest.mark.parametrize("k", [1, 2, 3, 4])

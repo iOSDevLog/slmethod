@@ -11,6 +11,20 @@ class BaseEstimator:
     # 类别个数
     k = 1
 
+    # 绘图颜色
+    _colors = (
+        "red",
+        "green",
+        "blue",
+        "magenta",
+        "yellow",
+        "cyan",
+        "black",
+        "white",
+        "gray",
+        "grey",
+    )
+
     def fit(self, X, y=None):
         self._setup_input(X, y)
 
@@ -63,20 +77,8 @@ class BaseEstimator:
         if (self.X.shape[1] != 2):
             raise ValueError("X must have 2d array.")
 
-        colors = (
-            "black",
-            "red",
-            "green",
-            "yellow",
-            "blue",
-            "magenta",
-            "cyan",
-            "white",
-            "gray",
-            "grey",
-        )
         resolution = 0.1
-        cmap = ListedColormap(colors[:self.k])
+        cmap = ListedColormap(self._colors[:self.k])
 
         x1_min, x1_max = self.X[:, 0].min() - 1, self.X[:, 0].max() + 1
         x2_min, x2_max = self.X[:, 1].min() - 1, self.X[:, 1].max() + 1

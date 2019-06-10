@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from slmethod.base import BaseEstimator
 from matplotlib.animation import FuncAnimation
 from functools import reduce
-from matplotlib.colors import ListedColormap
 
 
 class Perceptron(BaseEstimator):

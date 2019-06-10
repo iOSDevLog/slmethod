@@ -10,6 +10,15 @@
 
 Statistical Learning Method 统计学习方法
 
+## 方法
+
+- [x] precentron
+- [x] kmeans
+
+## 截图
+
+![kmeans](screenshot/kmeans.gif)
+
 ## PyPI 源加速
 
 ```python

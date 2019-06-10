@@ -59,27 +59,58 @@ class KMeans(BaseEstimator):
         if (self.X.shape[1] != 2):
             raise ValueError("X must have 2d array.")
 
+        _centers_iter = self._centers_list[0]
         fig, ax = plt.subplots()
 
-        scatter = ax.scatter(self.X[:, 0], self.X[:, 1], s=30, marker="o")
+        # X 散点图
+        ax.scatter(self.X[:, 0],
+                   self.X[:, 1],
+                   s=30,
+                   c="black",
+                   marker="o",
+                   label="slmethod kmeans")
+        # 起始 中心
+        ax.scatter(_centers_iter[:, 0], _centers_iter[:, 1], s=50, marker="^")
+        # 结束 中心
+        ax.scatter(self._centers[:, 0],
+                   self._centers[:, 1],
+                   s=300,
+                   marker="*",
+                   color='red')
+
+        self._lines = []
+
+        # X 与中心的连线
+        for i in range(len(self.X)):
+            x = self.X[i]
+            x_i = self.predict(x)[0]
+            points = np.vstack((x, _centers_iter[x_i]))
+            line_i = ax.plot(points[:, 0],
+                             points[:, 1],
+                             color=self._colors[x_i],
+                             linewidth=0.8,
+                             alpha=0.5)
+            self._lines.append(line_i)
 
         def update(iter):
             _centers_iter = self._centers_list[iter]
             title = "iter: {}".format(iter)
             plt.title(title)
-            # update center
-            ax.scatter(_centers_iter[:, 0],
-                       _centers_iter[:, 1],
-                       s=50,
-                       label=title,
-                       marker="^")
 
-            return scatter, ax
+            for i in range(len(self.X)):
+                x = self.X[i]
+                x_i = self.predict(x)[0]
+                points = np.vstack((x, _centers_iter[x_i]))
+                line_i = self._lines[i][0]
+                line_i.set_xdata(points[:, 0])
+                line_i.set_ydata(points[:, 1])
+
+            return self._lines, ax
 
         anim = FuncAnimation(fig,
                              update,
                              frames=len(self._centers_list),
-                             interval=200)
+                             interval=300)
 
         if name:
             anim.save(name, writer="imagemagick")
