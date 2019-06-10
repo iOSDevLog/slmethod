@@ -6,7 +6,7 @@ from slmethod.kmeans import KMeans
 random.seed(59)
 
 
-@pytest.mark.parametrize("k", [1, 2, 3, 4])
+@pytest.mark.parametrize("k", [1, 2])
 def test_kmeans(k):
     X = np.array([
         [1.0, 1],

@@ -10,6 +10,8 @@
 
 Statistical Learning Method 统计学习方法
 
+GitHub: <https://github.com/iOSDevLog/slmethod>
+
 ## 方法
 
 - [x] precentron

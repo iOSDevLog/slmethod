@@ -22,6 +22,7 @@ class Perceptron(BaseEstimator):
     _gram_matrix = None
 
     def __init__(self, dual=True, l_rate=None):
+        self.name = "Perceptron"
         if l_rate is not None:
             self.l_rate = l_rate
         self.dual = dual

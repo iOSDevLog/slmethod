@@ -14,6 +14,7 @@ class KMeans(BaseEstimator):
     _centers_list = []
 
     def __init__(self, k=2):
+        self.name = "KMeans"
         self.k = k
 
     def fit(self, X):
@@ -63,12 +64,12 @@ class KMeans(BaseEstimator):
         fig, ax = plt.subplots()
 
         # X 散点图
-        ax.scatter(self.X[:, 0],
-                   self.X[:, 1],
-                   s=30,
-                   c="black",
-                   marker="o",
-                   label="slmethod kmeans")
+        self._scatter = ax.scatter(self.X[:, 0],
+                                   self.X[:, 1],
+                                   s=30,
+                                   c="black",
+                                   marker="o",
+                                   label="slmethod kmeans")
         # 起始 中心
         ax.scatter(_centers_iter[:, 0], _centers_iter[:, 1], s=50, marker="^")
         # 结束 中心
@@ -94,9 +95,10 @@ class KMeans(BaseEstimator):
 
         def update(iter):
             _centers_iter = self._centers_list[iter]
-            title = "iter: {}".format(iter)
+            title = "{} iter: {}".format(self.name, iter)
             plt.title(title)
 
+            colors = []
             for i in range(len(self.X)):
                 x = self.X[i]
                 x_i = self.predict(x)[0]
@@ -104,6 +106,9 @@ class KMeans(BaseEstimator):
                 line_i = self._lines[i][0]
                 line_i.set_xdata(points[:, 0])
                 line_i.set_ydata(points[:, 1])
+                colors.append(self._colors[x_i])
+
+            self._scatter.set_color(colors)
 
             return self._lines, ax
 
