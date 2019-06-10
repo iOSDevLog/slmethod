@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from slmethod.base import BaseEstimator
 from matplotlib.animation import FuncAnimation
 from functools import reduce
+from matplotlib.colors import ListedColormap
 
 
 class Perceptron(BaseEstimator):
@@ -90,7 +91,7 @@ class Perceptron(BaseEstimator):
     # 对偶判定条件
     def _dual_judge(self, i):
         sum_array = self._alpha * self.y * self._gram_matrix[:, i]
-        return self.y[i] * reduce(lambda x, y: x+y, sum_array, self.b)
+        return self.y[i] * reduce(lambda x, y: x + y, sum_array, self.b)
 
     # 计算Gram Matrix
     def _cal_gram_matrix(self):

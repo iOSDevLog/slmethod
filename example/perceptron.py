@@ -18,4 +18,4 @@ origin_cls.show_anim()
 # 对偶形式
 dual_cls = Perceptron(dual=True)
 dual_cls.fit(X, y)
-dual_cls.show2d()
+dual_cls.show_2d()
