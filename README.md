@@ -19,7 +19,17 @@ GitHub: <https://github.com/iOSDevLog/slmethod>
 
 ## 截图
 
+### 感知机 Perceptron
+
+![perceptron](screenshot/perceptron.gif)
+
+![perceptron](screenshot/perceptron.png)
+
+### KMeans
+
 ![kmeans](screenshot/kmeans.gif)
+
+![kmeans](screenshot/kmeans.png)
 
 ## PyPI 源加速
 
