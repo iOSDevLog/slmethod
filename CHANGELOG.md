@@ -1,3 +1,12 @@
+# [0.2.2](https://github.com/iOSDevLog/slmethod/compare/v0.2.2...v) (2019-06-11)
+
+
+### Bug Fixes
+
+* **setup.py:** windows gbk ([1c8fb3d](https://github.com/iOSDevLog/slmethod/commit/1c8fb3d)), closes [#1](https://github.com/iOSDevLog/slmethod/issues/1)
+
+
+
 # [](https://github.com/iOSDevLog/slmethod/compare/v0.1.5...v) (2019-06-08)
 
 
