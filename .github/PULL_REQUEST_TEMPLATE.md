@@ -1,4 +1,4 @@
-<!--谢谢你提出了一个拉取请求! 请确保你已经看了贡献指南: https://github.com/scikit-learn/scikit-learn/blob/master/CONTRIBUTING.md#pull-request-checklist-->
+<!--谢谢你提出了一个拉取请求!-->
 
 #### 参考问题
 <!--
