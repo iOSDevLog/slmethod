@@ -22,20 +22,20 @@ GitHub: <https://github.com/iOSDevLog/slmethod>
 
 ### 感知机 Perceptron
 
-![perceptron](screenshot/perceptron.gif)
+![perceptron](https://raw.githubusercontent.com/iOSDevLog/slmethod/master/screenshot/perceptron.gif)
 
-![perceptron](screenshot/perceptron.png)
+![perceptron](https://raw.githubusercontent.com/iOSDevLog/slmethod/master/screenshot/perceptron.png)
 
 ### KMeans
 
-![kmeans](screenshot/kmeans.gif)
+![kmeans](https://raw.githubusercontent.com/iOSDevLog/slmethod/master/screenshot/kmeans.gif)
 
-![kmeans](screenshot/kmeans.png)
+![kmeans](https://raw.githubusercontent.com/iOSDevLog/slmethod/master/screenshot/kmeans.png)
 
 ## PyPI 境像加速
 
 ```python
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple slmethod
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple slmethod
 ```
 
 ## 代码规范
@@ -59,7 +59,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple slmethod
 ## 安装
 
 ```sh
-pip install slmethod
+pip3 install slmethod
 ```
 
 ## 开发
@@ -73,7 +73,7 @@ pip3 install -e .
 ### 测试
 
 ```sh
-pytest slmethod
+pytest slmethod -v
 ```
 
 ### 发布
@@ -83,9 +83,9 @@ python3 setup.py sdist bdist_wheel
 twine upload dist/*
 ```
 
-### 生成CHANGELOG
+### 生成 CHANGELOG
 
-```
+```sh
 npm install -g conventional-changelog-cli
 ./version.sh
 ```
