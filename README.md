@@ -82,6 +82,14 @@ python3 setup.py sdist bdist_wheel
 twine upload dist/*
 ```
 
+### 联系方式
+
+网站: [http://2019.iosdevlog.com/](https://2019.iosdevlog.com/)
+
+微信公众号: AI开发日志
+
+![AIDevLog](https://2019.iosdevlog.com/uploads/AIDevLog.jpg)
+
 ## License
 
 slmethod is released under the MIT license. See [LICENSE](LICENSE) for details.

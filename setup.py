@@ -27,7 +27,7 @@ JOBLIB_MIN_VERSION = "0.13"
 DISTNAME = "slmethod"
 VERSION = slmethod.__version__
 DESCRIPTION = "Statistical Learning Method package"
-with open("README.md") as f:
+with open("README.md", encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
 URL = "https://github.com/iOSDevLog/slmethod"
 AUTHOR = "Xianhua Jia"
