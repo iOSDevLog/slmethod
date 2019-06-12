@@ -28,6 +28,7 @@ class KMeans(BaseEstimator):
 
         old_clusters = None
         n_iters = 0
+        self._centers_list = []
 
         while True:
             new_clusters = [self._min_k(x) for x in X]
