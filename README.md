@@ -1,4 +1,4 @@
-# slmethod
+![AIDevLog](https://repository-images.githubusercontent.com/191505403/6a63bc80-8d1d-11e9-8bd7-44aaa16ccdb9)
 
 [![Build Status](https://travis-ci.org/iOSDevLog/slmethod.svg?branch=master)](https://travis-ci.org/iOSDevLog/slmethod)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/slmethod.svg)
@@ -8,6 +8,8 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/slmethod.svg)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/iOSDevLog/slmethod.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FiOSDevLog%2Fslmethod)
+
+# slmethod
 
 Statistical Learning Method 统计学习方法
 
@@ -90,7 +92,7 @@ npm install -g conventional-changelog-cli
 ./version.sh
 ```
 
-### 联系方式
+## 联系方式
 
 网站: [http://2019.iosdevlog.com/](https://2019.iosdevlog.com/)
 
