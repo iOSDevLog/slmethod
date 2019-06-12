@@ -6,12 +6,14 @@ from slmethod.base import BaseEstimator
 
 
 class KMeans(BaseEstimator):
+    """
     # 聚类个数
     k = 2
     # 中心位置
     _centers = []
     # 每一轮迭带的中心位置
     _centers_list = []
+    """
 
     def __init__(self, k=2):
         self.name = "KMeans"
@@ -31,7 +33,8 @@ class KMeans(BaseEstimator):
             new_clusters = [self._min_k(x) for x in X]
 
             if new_clusters == old_clusters:
-                print("Training finished after {n_iters} iterations!".format(n_iters=n_iters))
+                print("Training finished after {n_iters} iterations!".format(
+                    n_iters=n_iters))
                 return
 
             old_clusters = new_clusters

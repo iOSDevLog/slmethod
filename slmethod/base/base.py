@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 
 class BaseEstimator:
+    """
     # 样本特征集
     X = None
     # 样本标签集
@@ -11,6 +12,7 @@ class BaseEstimator:
     k = 1
     # 估计器名称
     name = "Base"
+    """
 
     # 绘图颜色
     _colors = (

@@ -28,6 +28,7 @@ def _get_sys_info():
 
     return dict(blob)
 
+
 def _get_deps_info():
     """Overview of the installed version of main dependencies
 
@@ -66,8 +67,9 @@ def _get_deps_info():
 
     return deps_info
 
+
 def show_versions():
-    "Print useful debugging information"
+    """Print useful debugging information"""
 
     sys_info = _get_sys_info()
     deps_info = _get_deps_info()

@@ -6,6 +6,7 @@ from functools import reduce
 
 
 class Perceptron(BaseEstimator):
+    """
     # 权重（权值）
     w = None
     # 偏置
@@ -20,12 +21,16 @@ class Perceptron(BaseEstimator):
     _alpha = 1
     # gram 矩阵，加速对偶
     _gram_matrix = None
+    """
 
     def __init__(self, dual=True, l_rate=None):
-        self.name = "Perceptron"
         if l_rate is not None:
             self.l_rate = l_rate
         self.dual = dual
+        if self.dual:
+            self.name = "Perceptron (Dual)"
+        else:
+            self.name = "Perceptron (Origin)"
 
     def sign(self, x, w, b):
         y = np.dot(x, w) + b
