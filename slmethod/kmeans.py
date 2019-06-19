@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from slmethod.base import BaseEstimator
+from matplotlib.collections import PathCollection
 
 
 class KMeans(BaseEstimator):
@@ -50,14 +51,16 @@ class KMeans(BaseEstimator):
             self._centers_list.append(np.copy(self._centers))
 
     # 找出点 x 离 k 个中心最近一个聚类
-    def _min_k(self, x):
+    def _min_k(self, x, centers=None):
+        if centers is None:
+            centers = self._centers
         # 欧式距离
-        dists = np.sqrt(np.sum((self._centers - x)**2, axis=1))
+        dists = np.sqrt(np.sum((centers - x)**2, axis=1))
         return np.argmin(dists)
 
-    def _predict(self, X):
+    def _predict(self, X, centers=None):
         X = np.atleast_2d(X)
-        new_clusters = [self._min_k(x) for x in X]
+        new_clusters = [self._min_k(x, centers) for x in X]
         return np.array(new_clusters)
 
     def show_anim(self, name=None):
@@ -70,18 +73,11 @@ class KMeans(BaseEstimator):
         # X 散点图
         self._scatter = ax.scatter(self.X[:, 0],
                                    self.X[:, 1],
-                                   s=30,
+                                   s=10,
                                    c="black",
                                    marker="o",
-                                   label="slmethod kmeans")
-        # 起始 中心
-        ax.scatter(_centers_iter[:, 0], _centers_iter[:, 1], s=50, marker="^")
-        # 结束 中心
-        ax.scatter(self._centers[:, 0],
-                   self._centers[:, 1],
-                   s=300,
-                   marker="*",
-                   color='red')
+                                   label="slmethod kmeans",
+                                   alpha=0.5)
 
         self._lines = []
 
@@ -93,9 +89,16 @@ class KMeans(BaseEstimator):
             line_i = ax.plot(points[:, 0],
                              points[:, 1],
                              color=self._colors[x_i],
-                             linewidth=0.8,
+                             linewidth=0.3,
                              alpha=0.5)
             self._lines.append(line_i)
+
+        _next_centers_iter = self._centers_list[1]
+        # 下一个 中心
+        self._next_iter_centers = ax.scatter(_next_centers_iter[:, 0],
+                                             _next_centers_iter[:, 1],
+                                             s=100,
+                                             color=self._colors[:self.k])
 
         def update(iter):
             _centers_iter = self._centers_list[iter]
@@ -105,23 +108,27 @@ class KMeans(BaseEstimator):
             colors = []
             for i in range(len(self.X)):
                 x = self.X[i]
-                x_i = self.predict(x)[0]
+                x_i = self._predict(x, _centers_iter)[0]
                 points = np.vstack((x, _centers_iter[x_i]))
                 line_i = self._lines[i][0]
                 line_i.set_xdata(points[:, 0])
                 line_i.set_ydata(points[:, 1])
+                line_i.set_color(self._colors[x_i])
                 colors.append(self._colors[x_i])
 
             self._scatter.set_color(colors)
+
+            _next_centers_iter = self._centers_list[(iter + 1) %
+                                                    len(self._centers_list)]
+            self._next_iter_centers.set_offsets(_next_centers_iter)
 
             return self._lines, ax
 
         anim = FuncAnimation(fig,
                              update,
                              frames=len(self._centers_list),
-                             interval=300)
+                             interval=500)
 
         if name:
             anim.save(name, writer="imagemagick")
-        else:
-            plt.show()
+        plt.show()

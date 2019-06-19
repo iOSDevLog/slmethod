@@ -76,7 +76,7 @@ class BaseEstimator:
 
         self.y = y
 
-    def show_2d(self):
+    def show_2d(self, name=None):
         if (self.X.shape[1] != 2):
             raise ValueError("X must have 2d array.")
 
@@ -97,4 +97,6 @@ class BaseEstimator:
         plt.xlabel("x1")
         plt.ylabel("x2")
         plt.title(self.name)
+        if name:
+            plt.savefig(name)
         plt.show()
